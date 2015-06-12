@@ -34,11 +34,10 @@
         "sonata-project/doctrine-phpcr-admin-bundle": "~1.1"
     },
     "autoload" : {
-        "psr-0" : {
+        "psr-4" : {
             "BrauneDigital\\CmsBundle" : ""
         }
     },
-    "target-dir" : "braune-digital/cms-bundle",
     "conflicts": {
         "jms/di-extra-bundle": "<1.3"
     },
