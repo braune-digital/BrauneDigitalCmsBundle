@@ -33,9 +33,9 @@
         "symfony-cmf/create-bundle": "~1.1",
         "sonata-project/doctrine-phpcr-admin-bundle": "~1.1"
     },
-    "autoload": {
-        "psr-4": {
-            "BrauneDigital\\CmsBundle\\": ""
+    "autoload" : {
+        "psr-0" : {
+            "BrauneDigital\\CmsBundle" : ""
         }
     },
     "target-dir" : "braune-digital/cms-bundle",
