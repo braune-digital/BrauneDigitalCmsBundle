@@ -1,0 +1,16 @@
+BrauneDigital\CmsBundle\Document\Layout:
+    referenceable: true
+    node: node
+    nodename: name
+    id:
+        fieldName: id
+        generator:
+            strategy: PARENT
+    fields:
+        title:
+            type: string
+        configuration:
+            type: string
+        template:
+            type: string
+    parentdocument: parent

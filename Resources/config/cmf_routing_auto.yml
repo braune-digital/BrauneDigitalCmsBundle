@@ -1,0 +1,5 @@
+BrauneDigital\CmsBundle\Document\Page:
+    uri_schema: /{_locale}/page/{title}
+    token_providers:
+        title: [content_method, { method: getTitle }]
+        _locale: [content_locale]

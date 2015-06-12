@@ -1,0 +1,7 @@
+{% for child in cmfMainContent.filterChildrenByCol('header') %}
+	{{ sonata_block_render(child) }}
+{% endfor %}
+
+{% for child in cmfMainContent.filterChildrenByCol('body') %}
+	{{ sonata_block_render(child) }}
+{% endfor %}

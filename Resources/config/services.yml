@@ -1,0 +1,23 @@
+services:
+    braunedigital_cms.controller:
+        class: BrauneDigital\CmsBundle\Controller\ContentController
+        parent: cmf_content.controller
+        calls:
+            - [ setContainer, ["@service_container"]]
+
+    braunedigital_cms.listener.cache:
+        class: BrauneDigital\CmsBundle\EventListener\CacheListener
+        arguments: [@router, @service_container, @kernel, @request_stack]
+        tags:
+            - { name: doctrine_phpcr.event_listener, event: postPersist }
+            - { name: doctrine_phpcr.event_listener, event: prePersist }
+            - { name: doctrine_phpcr.event_listener, event: postUpdate }
+            - { name: doctrine_phpcr.event_listener, event: preUpdate }
+
+    braunedigital_cms.twig_extension.cms:
+        class: BrauneDigital\CmsBundle\Twig\CmsExtension
+        public: false
+        arguments: [@cmf_core.templating.helper, @doctrine_phpcr, "%cmf_core.persistence.phpcr.manager_name%"]
+        tags:
+            - { name: twig.extension }
+

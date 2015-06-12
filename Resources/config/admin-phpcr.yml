@@ -1,0 +1,72 @@
+parameters:
+    braune_digital_cms.persistence.phpcr.admin.sort: false
+    braune_digital_cms.persistence.phpcr.admin.page.class: BrauneDigital\CmsBundle\Admin\PageAdmin
+    braune_digital_cms.persistence.phpcr.admin.layout.class: BrauneDigital\CmsBundle\Admin\LayoutAdmin
+    braune_digital_cms.persistence.phpcr.admin.headline.class: BrauneDigital\CmsBundle\Admin\HeadlineBlockAdmin
+    braune_digital_cms.persistence.phpcr.admin.textblock.class: BrauneDigital\CmsBundle\Admin\TextBlockAdmin
+    braune_digital_cms.persistence.phpcr.admin.imagineblock.class: BrauneDigital\CmsBundle\Admin\ImagineBlockAdmin
+
+services:
+    braune_digital_cms.persistence.phpcr.admin.page:
+        class: %braune_digital_cms.persistence.phpcr.admin.page.class%
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: dashboard.cmf, label_catalogue: "BrauneDigitalCmsBundle",  label: dashboard.label_page, label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - ~
+            - %braune_digital_cms.persistence.phpcr.document.class%
+            - "BrauneDigitalCmsBundle:PageAdmin"
+        calls:
+            - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
+            - [ setRouteRoot, [%braune_digital_cms.persistence.phpcr.basepath%]]
+            - [ setSortOrder, [%braune_digital_cms.persistence.phpcr.admin.sort%]]
+            - [ setControllerResolver, ["@controller_resolver"]]
+
+    braune_digital_cms.persistence.phpcr.admin.layout:
+        class: %braune_digital_cms.persistence.phpcr.admin.layout.class%
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: dashboard.cmf, label_catalogue: "BrauneDigitalCmsBundle",  label: dashboard.label_layout, label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - ~
+            - %braune_digital_cms.persistence.phpcr.layout.class%
+            - "SonataAdminBundle:CRUD"
+        calls:
+            - [ setRouteRoot, [%braune_digital_cms.persistence.phpcr.layout_basepath%]]
+
+    braune_digital_cms.persistence.phpcr.admin.headlineblock:
+        class: %braune_digital_cms.persistence.phpcr.admin.headline.class%
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_headline_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - ~
+            - BrauneDigital\CmsBundle\Document\HeadlineBlock
+            - "BrauneDigitalCmsBundle:BlockAdmin"
+        calls:
+            - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
+            - [ setRootPath, ["%cmf_block.persistence.phpcr.block_basepath%"]]
+            - [ setDocumentManager, ["@doctrine_phpcr"]]
+
+    braune_digital_cms.persistence.phpcr.admin.textblock:
+        class: %braune_digital_cms.persistence.phpcr.admin.textblock.class%
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_text_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - ~
+            - BrauneDigital\CmsBundle\Document\TextBlock
+            - "BrauneDigitalCmsBundle:BlockAdmin"
+        calls:
+            - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
+            - [ setRootPath, ["%cmf_block.persistence.phpcr.block_basepath%"]]
+            - [ setDocumentManager, ["@doctrine_phpcr"]]
+
+    braune_digital_cms.persistence.phpcr.admin.imagineblock:
+        class: %braune_digital_cms.persistence.phpcr.admin.imagineblock.class%
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_imagine_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
+        arguments:
+            - ~
+            - BrauneDigital\CmsBundle\Document\ImagineBlock
+            - "BrauneDigitalCmsBundle:BlockAdmin"
+        calls:
+            - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
+            - [ setRootPath, ["%cmf_block.persistence.phpcr.block_basepath%"]]
+            - [ setDocumentManager, ["@doctrine_phpcr"]]

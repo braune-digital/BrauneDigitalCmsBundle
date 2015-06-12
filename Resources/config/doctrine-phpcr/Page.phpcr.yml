@@ -1,0 +1,52 @@
+BrauneDigital\CmsBundle\Document\Page:
+    translator: attribute
+    locale: locale
+    node: node
+    fields:
+        title:
+            type: string
+            translated: true
+        label:
+            type: string
+            translated: true
+            nullable: true
+        body:
+            type: string
+            translated: true
+            nullable: true
+        publishable:
+            type: boolean
+        publishStartDate:
+            type: date
+            nullable: true
+        publishEndDate:
+            type: date
+            nullable: true
+        extras:
+            type: string
+            assoc:
+            nullable: true
+        display:
+            type: boolean
+        displayChildren:
+            type: boolean
+        attributes:
+            type: string
+            assoc:
+        childrenAttributes:
+            type: string
+            assoc:
+        labelAttributes:
+            type: string
+            assoc:
+    child:
+        additionalInfoBlock:
+            cascade:
+                - persist
+    referenceOne:
+        layout:
+            strategy: hard
+    referrers:
+        routes:
+            referringDocument: Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route
+            referencedBy: content

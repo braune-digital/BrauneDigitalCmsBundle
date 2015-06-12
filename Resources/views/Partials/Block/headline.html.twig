@@ -1,0 +1,7 @@
+{% if block.title is not empty %}
+	{% if block.headlineType is not empty %}
+		<{{ block.headlineType }}>{{ block.title|raw }}</{{ block.headlineType }}>
+	{% else %}
+		<h1>{{ block.title|raw }}</h1>
+	{% endif %}
+{% endif %}

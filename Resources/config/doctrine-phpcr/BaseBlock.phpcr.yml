@@ -1,0 +1,11 @@
+BrauneDigital\CmsBundle\Document\BaseBlock:
+    translator: attribute
+    referenceable: true
+    locale: locale
+    fields:
+        col:
+            type: string
+        position:
+            type: int
+        blockType:
+            type: string

@@ -1,0 +1,31 @@
+dashboard:
+    label_page: Page
+    label_layout: Layout
+    label_text_block: Text
+    label_headline_block: Headline
+
+list:
+    label_name: Name
+    label_title: Title
+    label_path: Path
+    label__action: Actions
+
+form:
+    group_general: General
+    label_label: Label
+    label_title: Title
+    label_layout: Layout
+    label_parent: Parent
+    label_name: Name
+    label_configuration: Configuration
+    label_template: Template
+    label_col: Column
+    label_headline_type: Type
+
+content_type:
+    headline: Headline
+    text: Headline + Text
+    imagine: Image
+
+breadcrumb:
+    link_headline_block_list: Headline Block

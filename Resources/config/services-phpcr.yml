@@ -1,0 +1,26 @@
+services:
+    braunedigital_cms.initializer:
+        class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
+        arguments:
+            - BrauneDigitalCmsBundle
+            - ["%braune_digital_cms.persistence.phpcr.basepath%", "%braune_digital_cms.persistence.phpcr.layout_basepath%"]
+        tags:
+            - { name: doctrine_phpcr.initializer }
+
+    braunedigital_cms.blocks.headline:
+        class: BrauneDigital\CmsBundle\Block\HeadlineBlockService
+        arguments: ["braunedigital_cms.blocks.headline", @templating]
+        tags:
+            - {name: "sonata.block"}
+
+    braunedigital_cms.blocks.text:
+        class: BrauneDigital\CmsBundle\Block\TextBlockService
+        arguments: ["braunedigital_cms.blocks.text", @templating]
+        tags:
+            - {name: "sonata.block"}
+
+    braunedigital_cms.blocks.imagine:
+        class: BrauneDigital\CmsBundle\Block\ImagineBlockService
+        arguments: ["braunedigital_cms.blocks.imagine", @templating]
+        tags:
+            - {name: "sonata.block"}

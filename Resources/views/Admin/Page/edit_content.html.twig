@@ -1,0 +1,38 @@
+{% extends base_template %}
+
+{% block sonata_admin_content %}
+	<h1>{{ page.title }}</h1>
+	<hr />
+	<table width="100%" class="table table-bordered table-striped" style="table-layout: fixed;">
+		{% for row in page.layout.getGrid() %}
+			<tr>
+				{% for col in row %}
+					<td colspan="{{ col.colspan }}">
+						<h3>{{ col.title }}</h3>
+						{% for child in page.filterChildrenByCol(col.col) %}
+							<div class="panel">
+								<div class="panel-body">
+									Position: {{ child.position }}<br />
+									{{ sonata_block_render(child) }}
+									<div class="btn-group">
+										{% set route = 'braunedigital_cms_' ~ child.blockType  ~ '_block_edit' %}
+										<a class="btn btn-sm btn-primary" href="{{ path(route, {'id': child.id, 'returnUrl': admin.generateObjectUrl('edit-content', page), col: col.col}) }}">
+											<span class="glyphicon glyphicon-edit"></span>
+										</a>
+										{% set route = 'braunedigital_cms_' ~ child.blockType  ~ '_block_delete' %}
+										<a class="btn btn-sm btn-danger" href="{{ path(route, {'id': child.id, 'returnUrl': admin.generateObjectUrl('edit-content', page), col: col.col}) }}">
+											<span class="glyphicon glyphicon-remove"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						<a class="btn btn-sm btn-success" href="{{ admin.generateObjectUrl('add-content', page, {col: col.col}) }}">
+							<span class="glyphicon glyphicon-plus"></span>
+						</a>
+					</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock sonata_admin_content %}

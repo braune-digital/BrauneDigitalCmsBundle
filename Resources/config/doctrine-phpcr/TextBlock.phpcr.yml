@@ -1,0 +1,6 @@
+BrauneDigital\CmsBundle\Document\TextBlock:
+    fields:
+        body:
+            type: string
+            translated: true
+            nullable: true

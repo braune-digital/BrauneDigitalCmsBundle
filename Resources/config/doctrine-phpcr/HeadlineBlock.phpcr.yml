@@ -1,0 +1,9 @@
+BrauneDigital\CmsBundle\Document\HeadlineBlock:
+    fields:
+        title:
+            type: string
+            translated: true
+            nullable: true
+        headlineType:
+            type: string
+            nullable: true

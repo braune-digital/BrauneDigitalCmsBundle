@@ -1,0 +1,17 @@
+BrauneDigital\CmsBundle\Document\ImagineBlock:
+    fields:
+        label:
+            type: string
+            translated: true
+            nullable: true
+        linkUrl:
+            type: string
+            translated: true
+            nullable: true
+        filter:
+            type: string
+            nullable: true
+    child:
+        image:
+            cascade:
+                - persist

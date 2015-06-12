@@ -1,0 +1,17 @@
+{% extends sonata_block.templates.block_base %}
+
+{% if block.filter %}
+    {% set filter = block.filter %}
+{% else %}
+    {% set filter = "braunedigital_cms_default" %}
+{% endif %}
+
+{% block block %}
+    {% if block.linkUrl %}
+        <a href="{{ block.linkUrl }}" title="{{ block.label|default('') }}">
+    {% endif %}
+        <span id="label">{{ block.label }}</span><img src="{{ cmf_media_display_url(block.image) }}" alt="{{ block.label }}" />
+    {% if block.linkUrl %}
+        </a>
+    {% endif %}
+{% endblock %}
