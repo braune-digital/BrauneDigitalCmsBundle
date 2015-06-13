@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BrauneDigital\CmsBundle\Document;
+namespace BrauneDigital\CmsBundle\PHPCR;
 
 use LogicException;
 use Knp\Menu\NodeInterface;
@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Additionally you can store "extra" string values in it for application
  * specific purposes.
  */
-class Page extends Route implements
+abstract class BasePage extends Route implements
     NodeInterface,
     RouteReferrersReadInterface, // this must not be the write interface, it would make no sense
     PublishTimePeriodInterface,

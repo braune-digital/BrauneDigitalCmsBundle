@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Symfony\Cmf\Bundle\RoutingBundle\Admin\RouteAdmin;
-use BrauneDigital\CmsBundle\Document\Page;
+use Application\BrauneDigital\CmsBundle\PHPCR\Page;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class PageAdmin extends RouteAdmin
@@ -78,7 +78,7 @@ class PageAdmin extends RouteAdmin
                 ->add('label', null, array('required' => false))
                 ->add('title')
                 ->add('layout', 'phpcr_document', array(
-					'class' => 'BrauneDigital\CmsBundle\Document\Layout'
+					'class' => 'BrauneDigital\CmsBundle\PHPCR\Layout'
 				))
             ->end()
         ;

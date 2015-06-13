@@ -2,8 +2,8 @@
 
 namespace BrauneDigital\CmsBundle\EventListener;
 
-use BrauneDigital\CmsBundle\Document\BaseBlock;
-use BrauneDigital\CmsBundle\Document\Page;
+use BrauneDigital\CmsBundle\PHPCR\BaseBlock;
+use Application\BrauneDigital\CmsBundle\PHPCR\Page;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Escapegamer\AppBundle\Entity\Event;
 use Escapegamer\AppBundle\Entity\EventTranslation;

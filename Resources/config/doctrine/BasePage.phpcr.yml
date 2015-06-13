@@ -1,4 +1,5 @@
-BrauneDigital\CmsBundle\Document\Page:
+BrauneDigital\CmsBundle\PHPCR\BasePage:
+    type: mappedSuperclass
     translator: attribute
     locale: locale
     node: node

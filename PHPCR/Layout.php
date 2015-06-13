@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BrauneDigital\CmsBundle\Document;
+namespace BrauneDigital\CmsBundle\PHPCR;
 
 use LogicException;
 use Knp\Menu\NodeInterface;

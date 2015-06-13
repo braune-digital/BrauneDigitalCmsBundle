@@ -2,7 +2,7 @@
 
 namespace BrauneDigital\CmsBundle\Controller;
 
-use BrauneDigital\CmsBundle\Document\TextBlock;
+use BrauneDigital\CmsBundle\PHPCR\TextBlock;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

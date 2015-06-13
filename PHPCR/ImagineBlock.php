@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BrauneDigital\CmsBundle\Document;
+namespace BrauneDigital\CmsBundle\PHPCR;
 
 use PHPCR\NodeInterface;
 use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BrauneDigital\CmsBundle\Document;
+namespace BrauneDigital\CmsBundle\PHPCR;
 
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
@@ -18,59 +18,38 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 /**
  * {@inheritDoc}
  */
-class HeadlineBlock extends BaseBlock
+class TextBlock extends HeadlineBlock
 {
 
 
     /**
      * @var string
 	 */
-    protected $title;
-
-	/**
-	 * @var
-	 */
-	protected $headlineType;
+    protected $body;
 
     /**
-     * Set title
+     * Set body
      *
-     * @param string $title
+     * @param string $body
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setBody($body)
     {
-        $this->title = $title;
+        $this->body = $body;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get body
      *
      * @return string
      */
-    public function getTitle()
+    public function getBody()
     {
-        return $this->title;
+        return $this->body;
     }
-
-	/**
-	 * @return mixed
-	 */
-	public function getHeadlineType()
-	{
-		return $this->headlineType;
-	}
-
-	/**
-	 * @param mixed $headlineType
-	 */
-	public function setHeadlineType($headlineType)
-	{
-		$this->headlineType = $headlineType;
-	}
 
 
 	/**
@@ -78,10 +57,8 @@ class HeadlineBlock extends BaseBlock
 	 */
 	public function getType()
 	{
-		return 'braunedigital_cms.blocks.headline';
+		return 'braunedigital_cms.blocks.text';
 	}
-
-
 
 
 

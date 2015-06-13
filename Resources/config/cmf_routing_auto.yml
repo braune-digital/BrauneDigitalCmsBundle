@@ -1,4 +1,4 @@
-BrauneDigital\CmsBundle\Document\Page:
+Application\BrauneDigital\CmsBundle\PHPCR\Page:
     uri_schema: /{_locale}/page/{title}
     token_providers:
         title: [content_method, { method: getTitle }]

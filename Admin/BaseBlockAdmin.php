@@ -36,7 +36,7 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 		$parentOptions = array(
 			'property' => 'id',
 			'read_only' => true,
-			'class'    => 'BrauneDigital\CmsBundle\Document\Page'
+			'class'    => 'Application\BrauneDigital\CmsBundle\PHPCR\Page'
 		);
 
 		if ($this->getRequest()->get('parent')) {

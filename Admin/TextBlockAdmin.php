@@ -3,7 +3,7 @@
 
 namespace BrauneDigital\CmsBundle\Admin;
 
-use BrauneDigital\CmsBundle\Document\TextBlock;
+use BrauneDigital\CmsBundle\PHPCR\TextBlock;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

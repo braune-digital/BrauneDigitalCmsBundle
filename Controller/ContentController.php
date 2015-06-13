@@ -2,7 +2,7 @@
 
 namespace BrauneDigital\CmsBundle\Controller;
 
-use BrauneDigital\CmsBundle\Document\Page;
+use Application\BrauneDigital\CmsBundle\PHPCR\Page;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Response;

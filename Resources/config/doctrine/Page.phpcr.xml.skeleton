@@ -1,0 +1,6 @@
+Application\BrauneDigital\CmsBundle\PHPCR\Page:
+	type: entity
+	id:
+		fieldName: id
+		generator:
+			strategy: PARENT

@@ -1,4 +1,4 @@
-BrauneDigital\CmsBundle\Document\ImagineBlock:
+BrauneDigital\CmsBundle\PHPCR\ImagineBlock:
     fields:
         label:
             type: string

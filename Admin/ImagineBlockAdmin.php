@@ -11,7 +11,7 @@
 
 namespace BrauneDigital\CmsBundle\Admin;
 
-use BrauneDigital\CmsBundle\Document\ImagineBlock;
+use BrauneDigital\CmsBundle\PHPCR\ImagineBlock;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 

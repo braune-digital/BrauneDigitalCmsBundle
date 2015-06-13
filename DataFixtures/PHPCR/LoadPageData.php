@@ -2,9 +2,9 @@
 
 namespace BrauneDigital\CmsBundle\DataFixtures\PHPCR;
 
-use BrauneDigital\CmsBundle\Document\Layout;
-use BrauneDigital\CmsBundle\Document\Page;
-use BrauneDigital\CmsBundle\Document\TextBlock;
+use BrauneDigital\CmsBundle\PHPCR\Layout;
+use Application\BrauneDigital\CmsBundle\PHPCR\Page;
+use BrauneDigital\CmsBundle\PHPCR\TextBlock;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;

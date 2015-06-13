@@ -17,11 +17,11 @@ class BrauneDigitalCmsBundle extends Bundle
 			$container->addCompilerPass(
 				DoctrinePhpcrMappingsPass::createYamlMappingDriver(
 					array(
-						realpath(__DIR__ . '/Resources/config/doctrine-phpcr') => 'BrauneDigital\CmsBundle\Document',
+						realpath(__DIR__ . '/Resources/config/doctrine') => 'BrauneDigital\CmsBundle\PHPCR',
 					),
 					array('braune_digital_cms_cms.persistence.phpcr.manager_name'),
 					false,
-					array('BrauneDigitalCmsBundle' => 'BrauneDigital\CmsBundle\Document')
+					array('BrauneDigitalCmsBundle' => 'BrauneDigital\CmsBundle\PHPCR')
 				)
 			);
 		}

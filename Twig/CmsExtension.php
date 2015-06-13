@@ -2,7 +2,7 @@
 
 namespace BrauneDigital\CmsBundle\Twig;
 
-use BrauneDigital\CmsBundle\Document\Page;
+use Application\BrauneDigital\CmsBundle\PHPCR\Page;
 use Symfony\Cmf\Bundle\CoreBundle\Templating\Helper\CmfHelper;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ODM\PHPCR\DocumentManager;

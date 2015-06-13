@@ -38,7 +38,7 @@ services:
             - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_headline_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
         arguments:
             - ~
-            - BrauneDigital\CmsBundle\Document\HeadlineBlock
+            - BrauneDigital\CmsBundle\PHPCR\HeadlineBlock
             - "BrauneDigitalCmsBundle:BlockAdmin"
         calls:
             - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
@@ -51,7 +51,7 @@ services:
             - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_text_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
         arguments:
             - ~
-            - BrauneDigital\CmsBundle\Document\TextBlock
+            - BrauneDigital\CmsBundle\PHPCR\TextBlock
             - "BrauneDigitalCmsBundle:BlockAdmin"
         calls:
             - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]
@@ -64,7 +64,7 @@ services:
             - { name: sonata.admin, manager_type: doctrine_phpcr, group: "dashboard.cmf", label: "dashboard.label_imagine_block", label_catalogue: "BrauneDigitalCmsBundle", label_translator_strategy: "sonata.admin.label.strategy.underscore" }
         arguments:
             - ~
-            - BrauneDigital\CmsBundle\Document\ImagineBlock
+            - BrauneDigital\CmsBundle\PHPCR\ImagineBlock
             - "BrauneDigitalCmsBundle:BlockAdmin"
         calls:
             - [ setRouteBuilder, ["@sonata.admin.route.path_info_slashes"]]

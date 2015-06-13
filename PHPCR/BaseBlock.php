@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BrauneDigital\CmsBundle\Document;
+namespace BrauneDigital\CmsBundle\PHPCR;
 
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
