@@ -104,7 +104,7 @@ class ContentController extends BaseContentController
             'example' => 'Additional value injected by the controller for this type (this could work without content if we want)',
         );
 
-        return $this->renderResponse('EscapegamerAppBundle::controller.html.twig', $params);
+        return $this->renderResponse('ApplicationAppBundle::controller.html.twig', $params);
     }
 
     /**
@@ -127,7 +127,7 @@ class ContentController extends BaseContentController
             'example' => 'Additional value injected by the controller for all content mapped to classAction',
         );
 
-        return $this->renderResponse('EscapegamerAppBundle:Demo:controller.html.twig', $params);
+        return $this->renderResponse('ApplicationAppBundle:Demo:controller.html.twig', $params);
     }
 
     /**
@@ -150,6 +150,6 @@ class ContentController extends BaseContentController
             'example' => 'Additional value injected by the controller when explicitly referenced',
         );
 
-        return $this->renderResponse('EscapegamerAppBundle:Demo:controller.html.twig', $params);
+        return $this->renderResponse('ApplicationAppBundle:Demo:controller.html.twig', $params);
     }
 }
