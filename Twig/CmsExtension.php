@@ -3,6 +3,7 @@
 namespace BrauneDigital\CmsBundle\Twig;
 
 use BrauneDigital\CmsBundle\Document\Page;
+use Doctrine\ODM\PHPCR\Translation\MissingTranslationException;
 use Symfony\Cmf\Bundle\CoreBundle\Templating\Helper\CmfHelper;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ODM\PHPCR\DocumentManager;
@@ -57,15 +58,17 @@ class CmsExtension extends \Twig_Extension
 		}
 
 		$metadata = $this->dm->getClassMetadata(get_class($page));
-		$fallbackLocales = $this->dm->getLocaleChooserStrategy()->getFallbackLocales($page, $metadata, $locale);
-		foreach ($fallbackLocales as $fallbackLocale) {
-			foreach ($page->getRoutes() as $fallbackLocale) {
-				$defaults = $route->getDefaults();
-				if ($defaults['_locale'] == $locale) {
-					return $route->getId();
+		try {
+			$fallbackLocales = $this->dm->getLocaleChooserStrategy()->getFallbackLocales($page, $metadata, $locale);
+			foreach ($fallbackLocales as $fallbackLocale) {
+				foreach ($page->getRoutes() as $fallbackLocale) {
+					$defaults = $route->getDefaults();
+					if ($defaults['_locale'] == $locale) {
+						return $route->getId();
+					}
 				}
 			}
-		}
+		} catch (MissingTranslationException $e) {}
 
 		return null;
 	}
