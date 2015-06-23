@@ -15,6 +15,7 @@ class TextBlockAdmin extends HeadlineBlockAdmin
 {
 
 	protected $baseRouteName = 'braunedigital_cms_text_block';
+	protected $class = 'BrauneDigital\CmsBundle\Document\TextBlock';
 
     /**
      * {@inheritdoc}

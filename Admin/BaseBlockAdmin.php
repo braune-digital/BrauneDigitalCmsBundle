@@ -15,6 +15,8 @@ use Symfony\Cmf\Bundle\BlockBundle\Admin\AbstractBlockAdmin;
 class BaseBlockAdmin extends AbstractBlockAdmin
 {
 
+	use TranslationPhpcrAdminTrait;
+
 	/**
 	 * @var ManagerRegistry
 	 */
@@ -32,6 +34,9 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 	 */
 	protected function configureFormFields(FormMapper $formMapper)
 	{
+
+		$this->setCurrentLocale();
+		$this->buildTranslations($this->subject);
 
 		$parentOptions = array(
 			'property' => 'id',
@@ -67,6 +72,22 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 			$parameters['col'] = $this->getRequest()->get('col');
 		}
 		return parent::generateUrl($name, $parameters, $absolute);
+	}
+
+	/**
+	 * @param string $name
+	 * @return null|string
+	 */
+	public function getTemplate($name)
+	{
+		switch ($name) {
+			case 'edit':
+				return 'BrauneDigitalCmsBundle:Admin:CRUD/base_edit.html.twig';
+				break;
+			default:
+				return parent::getTemplate($name);
+				break;
+		}
 	}
 
 

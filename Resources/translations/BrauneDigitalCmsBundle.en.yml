@@ -29,3 +29,10 @@ content_type:
 
 breadcrumb:
     link_headline_block_list: Headline Block
+
+locales:
+    de: German
+    en: English
+    es: Spain
+    fr: France
+    ru: Russian

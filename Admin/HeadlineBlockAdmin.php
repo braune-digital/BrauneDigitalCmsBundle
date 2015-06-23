@@ -15,6 +15,7 @@ class HeadlineBlockAdmin extends BaseBlockAdmin
 {
 
 	protected $baseRouteName = 'braunedigital_cms_headline_block';
+	protected $class = 'BrauneDigital\CmsBundle\Document\HeadlineBlock';
 
     /**
      * {@inheritdoc}

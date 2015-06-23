@@ -21,9 +21,14 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class PageAdmin extends RouteAdmin
 {
-    protected $translationDomain = 'BrauneDigitalCmsBundle';
 
+	use TranslationPhpcrAdminTrait;
+
+	protected $class = 'BrauneDigital\CmsBundle\Document\Page';
+
+    protected $translationDomain = 'BrauneDigitalCmsBundle';
     private $sortOrder = false;
+
 
 	protected function configureRoutes(RouteCollection $collection)
 	{
@@ -59,6 +64,10 @@ class PageAdmin extends RouteAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+		$this->setCurrentLocale();
+		$this->buildTranslations($this->subject);
+
 		$formMapper
 			->with('form.group_general', array(
 				'translation_domain' => 'CmfRoutingBundle',
@@ -166,6 +175,9 @@ class PageAdmin extends RouteAdmin
 	public function getTemplate($name)
 	{
 		switch ($name) {
+			case 'edit':
+				return 'BrauneDigitalCmsBundle:Admin:CRUD/base_edit.html.twig';
+				break;
 			case 'edit_content':
 				return 'BrauneDigitalCmsBundle:Admin:Page/edit_content.html.twig';
 				break;
@@ -177,4 +189,8 @@ class PageAdmin extends RouteAdmin
 				break;
 		}
 	}
+
+
+
+
 }

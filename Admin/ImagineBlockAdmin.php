@@ -22,6 +22,7 @@ class ImagineBlockAdmin extends BaseBlockAdmin
 {
 
 	protected $baseRouteName = 'braunedigital_cms_imagine_block';
+	protected $class = 'BrauneDigital\CmsBundle\Document\ImagineBlock';
 
     /**
      * {@inheritdoc}
