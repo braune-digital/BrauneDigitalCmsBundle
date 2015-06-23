@@ -6,7 +6,6 @@ braune_digital_cms:
     persistence:
         phpcr:
             use_sonata_cache: false
-            sonata_cache: sonata.cache.memcached
 
 twig:
     form_themes:
