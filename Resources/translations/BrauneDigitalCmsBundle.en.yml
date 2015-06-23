@@ -20,6 +20,8 @@ form:
     label_configuration: Configuration
     label_template: Template
     label_col: Column
+    label_position: Position
+    label_parent_document: Parent Document
     label_headline_type: Type
 
 content_type:

@@ -9,6 +9,7 @@
 				{% for col in row %}
 					<td colspan="{{ col.colspan }}">
 						<h3>{{ col.title }}</h3>
+						{% set pos = 0 %}
 						{% for child in page.filterChildrenByCol(col.col) %}
 							<div class="panel">
 								<div class="panel-body">
@@ -26,8 +27,9 @@
 									</div>
 								</div>
 							</div>
+							{% set pos = pos + loop.index %}
 						{% endfor %}
-						<a class="btn btn-sm btn-success" href="{{ admin.generateObjectUrl('add-content', page, {col: col.col}) }}">
+						<a class="btn btn-sm btn-success" href="{{ admin.generateObjectUrl('add-content', page, {col: col.col, pos: pos}) }}">
 							<span class="glyphicon glyphicon-plus"></span>
 						</a>
 					</td>
