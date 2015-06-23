@@ -29,6 +29,9 @@ content_type:
 
 breadcrumb:
     link_headline_block_list: Headline Block
+    link_imagine_block_list: Imagine Block
+    link_text_block_list: Text Block
+    link_page_list: Page
 
 locales:
     de: German
