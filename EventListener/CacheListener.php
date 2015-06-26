@@ -19,18 +19,12 @@ use Symfony\Component\Routing\RouterInterface;
 class CacheListener extends ContainerAware {
 
     protected $container;
-	protected $router;
-	protected $kernel;
-	protected $requestStack;
 
 	protected $formats = array('html', 'json');
 
-    public function __construct(RouterInterface $router, ContainerInterface $container, Kernel $kernel, RequestStack $requestStack)
+    public function __construct(ContainerInterface $container)
     {
-        $this->router = $router;
 		$this->container = $container;
-		$this->kernel = $kernel;
-		$this->requestStack = $requestStack;
     }
 
 	public function prePersist(LifecycleEventArgs $args) {
@@ -38,7 +32,9 @@ class CacheListener extends ContainerAware {
 	}
 
 	public function postPersist(LifecycleEventArgs $args) {
+
 		$this->postUpdate($args);
+
 	}
 
 	public function preUpdate(LifecycleEventArgs $args) {
@@ -46,47 +42,18 @@ class CacheListener extends ContainerAware {
 	}
 
 	public function postUpdate(LifecycleEventArgs $args) {
-
 		$config = $this->container->getParameter('braune_digital_cms');
-		if ($config['persistence']['phpcr']['use_sonata_cache']) {
-
-			$cache = $this->container->get($config['persistence']['phpcr']['sonata_cache']);
-			$entity = $args->getObject();
-			$keys = array();
-			$locales = $this->container->getParameter('locales');
-
-			if ($entity instanceof Page) {
-				// Cache for show route
-				foreach ($locales as $locale) {
-					foreach($this->formats as $format) {
-						$keys[] = array(
-							'type' => 'braune_digital_cms_content',
-							'id' => $entity->getId(),
-							'format' => $format,
-							'locale' => $locale
-						);
-					}
-				}
+		$cacheManager = $this->container->get('fos_http_cache.cache_manager');
+		$entity = $args->getObject();
+		$locales = $this->container->getParameter('locales');
+		if ($entity instanceof Page) {
+			foreach ($entity->getRoutes() as $route) {
+				$cacheManager->refreshRoute($route->getId());
 			}
-			if ($entity instanceof BaseBlock) {
-				// Cache for show route
-				foreach ($locales as $locale) {
-					foreach($this->formats as $format) {
-						$keys[] = array(
-							'type' => 'braune_digital_cms_content',
-							'id' => $entity->getParentDocument()->getId(),
-							'format' => $format,
-							'locale' => $locale
-						);
-					}
-				}
-			}
-			if (count($keys) > 0) {
-				foreach ($keys as $key) {
-					if ($cache->has($key)) {
-						$cache->flush($key);
-					}
-				}
+		}
+		if ($entity instanceof BaseBlock) {
+			foreach ($entity->getParentDocument()->getRoutes() as $route) {
+				$cacheManager->refreshRoute($route->getId());
 			}
 		}
 	}

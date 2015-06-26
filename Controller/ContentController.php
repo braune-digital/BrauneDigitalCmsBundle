@@ -59,28 +59,8 @@ class ContentController extends BaseContentController
 			);
 		}
 
-
-		$config = $this->container->getParameter('braune_digital_cms');
-		if ($config['persistence']['phpcr']['use_sonata_cache']) {
-			$cache = $this->container->get($config['persistence']['phpcr']['sonata_cache']);
-
-			$key = array(
-				'type' => 'braune_digital_cms_content',
-				'route' => $request->get('_route'),
-				'format' => $request->getRequestFormat(),
-				'locale' => $request->getLocale()
-			);
-			if (!$cache->has($key)) {
-				$params = $this->getParams($request, $contentDocument);
-				$content = $this->renderResponse($contentTemplate, $params);
-				$cache->set($key, $content);
-				return $content;
-			}
-			return $cache->get($key)->getData();
-		} else {
-			$params = $this->getParams($request, $contentDocument);
-			return $this->renderResponse($contentTemplate, $params);
-		}
+		$params = $this->getParams($request, $contentDocument);
+		return $this->renderResponse($contentTemplate, $params);
 
     }
 

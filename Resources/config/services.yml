@@ -7,7 +7,7 @@ services:
 
     braunedigital_cms.listener.cache:
         class: BrauneDigital\CmsBundle\EventListener\CacheListener
-        arguments: [@router, @service_container, @kernel, @request_stack]
+        arguments: [@service_container]
         tags:
             - { name: doctrine_phpcr.event_listener, event: postPersist }
             - { name: doctrine_phpcr.event_listener, event: prePersist }
