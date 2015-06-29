@@ -1,0 +1,43 @@
+dashboard:
+    label_page: Seite
+    label_layout: Layout
+    label_text_block: Text
+    label_headline_block: Überschrift
+
+list:
+    label_name: Name
+    label_title: Titel
+    label_path: Pfad
+    label__action: Aktionen
+
+form:
+    group_general: Allgemein
+    label_label: Label
+    label_title: Titel
+    label_layout: Layout
+    label_parent: Übergeordnet
+    label_name: Name
+    label_configuration: Konfiguration
+    label_template: Template
+    label_col: Spalte
+    label_position: Position
+    label_parent_document: Übergeordnetes Dokument
+    label_headline_type: Typ
+
+content_type:
+    headline: Überschrift
+    text: Überschrift + Text
+    imagine: Bild
+
+breadcrumb:
+    link_headline_block_list: Überschrift Block
+    link_imagine_block_list: Bild Block
+    link_text_block_list: Text Block
+    link_page_list: Seite
+
+locales:
+    de: Deutsch
+    en: Englisch
+    es: Spanisch
+    fr: Französisch
+    ru: Russisch
