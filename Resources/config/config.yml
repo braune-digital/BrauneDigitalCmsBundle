@@ -3,9 +3,6 @@ braune_digital_cms:
         - {label: 'content_type.headline', name: 'headline'}
         - {label: 'content_type.text', name: 'text'}
         - {label: 'content_type.imagine', name: 'imagine'}
-    persistence:
-        phpcr:
-            use_sonata_cache: false
 
 twig:
     form_themes:
@@ -31,11 +28,3 @@ liip_imagine:
 cmf_media:
     imagine_filters:
         upload_thumbnail: braunedigital_cms_default
-
-
-#sonata_block:
-#    blocks:
-#        braunedigital_cms.blocks.headline:
-#            cache: sonata.cache.predis
-#        braunedigital_cms.blocks.text:
-#            cache: sonata.cache.predis
