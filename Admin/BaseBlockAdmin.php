@@ -17,6 +17,8 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 
 	use TranslationPhpcrAdminTrait;
 
+	protected $translationDomain = 'BrauneDigitalCmsBundle';
+
 	/**
 	 * @var ManagerRegistry
 	 */
@@ -59,7 +61,7 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 				'read_only' => true,
 				'data' => $this->getRequest()->get('col')
 			))
-			->add('position')
+			->add('position', null, $this->getRequest()->get('pos') ? array('data' => $this->getRequest()->get('pos')) : array())
 			->end()
 		;
 	}
@@ -70,6 +72,9 @@ class BaseBlockAdmin extends AbstractBlockAdmin
 		$parameters['returnUrl'] = $this->getRequest()->get('returnUrl');
 		if ($this->getRequest()->get('col')) {
 			$parameters['col'] = $this->getRequest()->get('col');
+		}
+		if ($this->getRequest()->get('object_locale')) {
+			$parameters['object_locale'] = $this->getRequest()->get('object_locale');
 		}
 		return parent::generateUrl($name, $parameters, $absolute);
 	}

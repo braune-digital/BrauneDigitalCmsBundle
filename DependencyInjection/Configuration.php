@@ -38,7 +38,6 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('document_class')->defaultValue('BrauneDigital\CmsBundle\Document\Page')->end()
                                 ->scalarNode('layout_class')->defaultValue('BrauneDigital\CmsBundle\Document\Layout')->end()
 								->scalarNode('sonata_cache')->defaultValue('sonata.cache.memcached')->end()
-								->scalarNode('use_sonata_cache')->defaultValue(false)->end()
                                 ->enumNode('use_sonata_admin')
                                     ->values(array(true, false, 'auto'))
                                     ->defaultValue('auto')

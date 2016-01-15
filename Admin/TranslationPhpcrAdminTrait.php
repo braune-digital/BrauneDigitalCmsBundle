@@ -35,8 +35,8 @@ trait TranslationPhpcrAdminTrait  {
 		$managerRegistry = $this->getConfigurationPool()->getContainer()->get('doctrine_phpcr');
 		$dm = $managerRegistry->getManagerForClass($this->class);
 		$existingLocales = $dm->getLocalesFor($this->getSubject());
-		$locales = $this->getConfigurationPool()->getContainer()->getParameter('doctrine_phpcr.odm.locales');
-		foreach($locales as $locale => $fallbackDefinition) {
+		$locales = $this->getConfigurationPool()->getContainer()->getParameter('locales');
+		foreach($locales as $locale) {
 			$this->locales[] = array(
 				'exists' => in_array($locale, $existingLocales),
 				'code' => $locale
