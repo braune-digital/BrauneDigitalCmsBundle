@@ -6,6 +6,10 @@ BrauneDigital\CmsBundle\Document\Page:
         title:
             type: string
             translated: true
+        description:
+            type: string
+            translated: true
+            nullable: true
         label:
             type: string
             translated: true
@@ -41,6 +45,9 @@ BrauneDigital\CmsBundle\Document\Page:
             assoc:
     child:
         additionalInfoBlock:
+            cascade:
+                - persist
+        seoMetadata:
             cascade:
                 - persist
     referenceOne:

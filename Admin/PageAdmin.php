@@ -86,6 +86,7 @@ class PageAdmin extends RouteAdmin
             ))
                 ->add('label', null, array('required' => false))
                 ->add('title')
+                ->add('description')
                 ->add('layout', 'phpcr_document', array(
 					'class' => 'BrauneDigital\CmsBundle\Document\Layout'
 				))
@@ -97,7 +98,7 @@ class PageAdmin extends RouteAdmin
     {
         $datagridMapper
             ->add('title', 'doctrine_phpcr_string')
-            ->add('name',  'doctrine_phpcr_nodename')
+            ->add('name', 'doctrine_phpcr_nodename')
         ;
     }
 

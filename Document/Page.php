@@ -12,6 +12,7 @@ use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 use Symfony\Cmf\Bundle\MenuBundle\Model\MenuOptionsInterface;
 use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route;
+use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 use PHPCR\NodeInterface as PHPCRNodeInterface;
 
@@ -34,7 +35,8 @@ class Page extends Route implements
     PublishTimePeriodInterface,
     PublishableInterface,
     MenuOptionsInterface,
-    TranslatableInterface
+    TranslatableInterface,
+    SeoAwareInterface
 {
     /**
      * @var NodeInterface
@@ -45,6 +47,12 @@ class Page extends Route implements
      * @Assert\NotBlank
      */
     protected $title;
+
+    /**
+     * @var string
+     */
+    protected $description;
+
 
     /**
      * Menu label.
@@ -151,6 +159,19 @@ class Page extends Route implements
 	 * @var
 	 */
 	protected $routes;
+
+    protected $seoMetadata;
+
+
+    public function getSeoMetadata()
+    {
+        return $this->seoMetadata;
+    }
+
+    public function setSeoMetadata($metadata)
+    {
+        $this->seoMetadata = $metadata;
+    }
 
     /**
      * @deprecated use getOption('add_locale_pattern') instead
@@ -345,7 +366,11 @@ class Page extends Route implements
     {
 		$iterator = $this->children->getIterator();
 		$iterator->uasort(function ($a, $b) {
-			return ($a->getPosition() < $b->getPosition()) ? -1 : 1;
+            if (method_exists($a, 'getPosition') && method_exists($b, 'getPosition')) {
+			    return ($a->getPosition() < $b->getPosition()) ? -1 : 1;
+            } else {
+                return -1;
+            }
 		});
 		return new ArrayCollection(iterator_to_array($iterator));
     }
@@ -429,6 +454,22 @@ class Page extends Route implements
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     /**
@@ -730,7 +771,12 @@ class Page extends Route implements
 	 */
 	public function filterChildrenByCol($col) {
 		return $this->getChildren()->filter(function($child) use ($col) {
-			return $child->getCol() === $col;
+            if (method_exists($child, 'getCol')) {
+                return $child->getCol() === $col;
+            } else {
+                return false;
+            }
+
 		});
 	}
 
